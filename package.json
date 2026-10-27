@@ -1,0 +1,25 @@
+{
+  "name": "recoverid-shield",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RecoverID Shield: Self-custodial smart-contract wallet with social recovery",
+  "scripts": {
+    "build": "pnpm --filter @recoverid/shared build && pnpm --filter @recoverid/api build && pnpm --filter @recoverid/web build",
+    "test": "pnpm --filter @recoverid/shared test && pnpm --filter @recoverid/api test && pnpm --filter @recoverid/web test",
+    "test:contracts": "cd contracts && forge test -vv",
+    "compile:contracts": "cd contracts && forge build",
+    "start:anvil": "anvil --host 127.0.0.1 --port 8545 --chain-id 31337",
+    "deploy:local": "pnpm --filter @recoverid/api exec tsx ../../scripts/deploy-local.ts",
+    "test:e2e": "pnpm --filter @recoverid/api exec tsx ../../scripts/run-e2e.ts",
+    "dev:api": "pnpm --filter @recoverid/api dev",
+    "dev:web": "pnpm --filter @recoverid/web dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
